@@ -12,15 +12,6 @@ const postCrud = async(req,res)=>{
         data: { tour: newCrud }
     });
 
-    // const crud = new Crud({
-    //     title: req.body.title,
-    //     task: req.body.task,
-    //   });
-    //   crud.save().then(val => {
-    //     res.json({ msg: "Task Added Successfully", val: val })
-    //   })
-
-      //ptank@technithunder.com
 
 }
 
@@ -51,7 +42,7 @@ const deleteCrud = async (req, res) => {
     res.status(200).json({ message: 'Crud item deleted successfully' });
   } catch (error) {
     console.error(error); 
-    res.status(500).json({ error: 'Internal server error' }); // Send generic error message for client
+    res.status(500).json({ error: 'Internal server error' }); 
   }
 };
 
@@ -85,11 +76,11 @@ const updateCrud = async (req, res) => {
     }
 
     if (updatedCrud.errors) {
-      const validationErrors = [];
+      const Errors = [];
       for (const error in updatedCrud.errors) {
-        validationErrors.push(error.message);
+        Errors.push(error.message);
       }
-      return res.status(400).json({ error: 'Validation errors:', validationErrors });
+      return res.status(400).json({ error: 'Validation errors:', Errors });
     }
 
     res.status(200).json({ message: 'Crud item updated successfully', updatedCrud });
